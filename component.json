@@ -1,0 +1,220 @@
+{
+    "title": "SqlManagementClient",
+    "description": "The Azure SQL Database management API provides a RESTful set of web APIs that interact with Azure SQL Database services to manage your databases. The API enables users to create, retrieve, update, and delete databases, servers, and other entities.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/sql-databases/2017-10-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Databases_ListByServer": {
+            "main": "./lib/actions/Databases_ListByServer.js",
+            "title": "Gets a list of databases.",
+            "description": "Gets a list of databases.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_ListByServer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Delete": {
+            "main": "./lib/actions/Databases_Delete.js",
+            "title": "Deletes the database.",
+            "description": "Deletes the database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Get": {
+            "main": "./lib/actions/Databases_Get.js",
+            "title": "Gets a database.",
+            "description": "Gets a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Update": {
+            "main": "./lib/actions/Databases_Update.js",
+            "title": "Updates an existing database.",
+            "description": "Updates an existing database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_CreateOrUpdate": {
+            "main": "./lib/actions/Databases_CreateOrUpdate.js",
+            "title": "Creates a new database or updates an existing database.",
+            "description": "Creates a new database or updates an existing database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Rename": {
+            "main": "./lib/actions/Databases_Rename.js",
+            "title": "Renames a database.",
+            "description": "Renames a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Rename.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Pause": {
+            "main": "./lib/actions/Databases_Pause.js",
+            "title": "Pauses a database.",
+            "description": "Pauses a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Pause.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Resume": {
+            "main": "./lib/actions/Databases_Resume.js",
+            "title": "Resumes a database.",
+            "description": "Resumes a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Resume.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_UpgradeDataWarehouse": {
+            "main": "./lib/actions/Databases_UpgradeDataWarehouse.js",
+            "title": "Upgrades a data warehouse.",
+            "description": "Upgrades a data warehouse.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_UpgradeDataWarehouse.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_ListByElasticPool": {
+            "main": "./lib/actions/Databases_ListByElasticPool.js",
+            "title": "Gets a list of databases in an elastic pool.",
+            "description": "Gets a list of databases in an elastic pool.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_ListByElasticPool.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
